@@ -36,6 +36,9 @@ and (max-width: 1280px) {
     width: 60vw;
     font-size: 1.8vw;
   }
+  #version-text {
+    font-size: 1.8vw;
+  }
 }
 
 /* less than 1000px width screen -- most phones*/

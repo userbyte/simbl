@@ -1,0 +1,12 @@
+# general ignores
+*.sublime-*
+
+# backend ignores
+backend/cfg/
+backend/data/
+backend/logs/
+venv/
+*.cpython*
+
+# frontend ignores
+# frontend/files/js/config.js

@@ -1,0 +1,29 @@
+# just trying to figure out how i want the database layed out before i commit to it in code
+
+# post
+{
+"#_comment_#": "ID of the post -- not sure if i wanna do an iterative ID",
+	"id": "",
+
+"#_comment_#": "unix timestamp of post creation",
+	"timestamp": "0",
+
+"#_comment_#": "xAPI user ID of the post author",
+	"author": "X_ABC123",
+
+"#_comment_#": "post text content",
+	"text": "an example post",
+
+"#_comment_#": "post attachments (files, images, videos, etc). we classify them with types so the frontend knows how to display it",
+	"attachments": 
+	[
+		{
+			"type":"image",
+		    "data":"(base64-encoded image data)"
+		},
+		{
+			"type":"file",
+			"data":"(base64-encoded file data)"
+		},
+	]
+}

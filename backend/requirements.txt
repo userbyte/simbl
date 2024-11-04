@@ -1,0 +1,9 @@
+flask
+flask_cors
+flask_restful
+flask_compress
+requests
+werkzeug
+pickledb
+gunicorn
+toml

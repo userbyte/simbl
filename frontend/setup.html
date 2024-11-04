@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="simbl" />
+        <meta name="keywords" content="microblog" />
+        <meta name="author" content="userbyte.xyz" />
+        <meta property="og:title" content="simbl" />
+        <meta
+            property="og:image"
+            content="https://userbyte.xyz/simbl/files/img/simbl.png"
+        />
+        <meta property="og:description" content="a dumb little microblog" />
+        <link rel="manifest" href="files/pwa/manifest.json" />
+        <link rel="apple-touch-icon" href="files/pwa/simbl.png" />
+        <meta name="theme-color" content="#343434" />
+        <meta name="viewport" content="user-scalable=no" />
+        <link href="files/fa/css/all.css" rel="stylesheet" />
+        <link href="files/css/general.css" rel="stylesheet" />
+        <link href="files/css/main.css" rel="stylesheet" />
+        <link href="files/css/main-responsive.css" rel="stylesheet" />
+        <link href="files/css/setup.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" id="theme_css" />
+        <script type="text/javascript" src="files/js/config.js"></script>
+        <script type="text/javascript" src="files/js/shared.js"></script>
+        <script type="text/javascript" src="files/js/xclient.js"></script>
+        <script type="text/javascript" src="files/js/setup.js"></script>
+        <link
+            rel="icon"
+            href="files/img/ico/simbl.ico"
+            type="image/png"
+        />
+        <title>simbl</title>
+    </head>
+    <body>
+        <div id="header">
+            <h1><a href="index.html">simbl</a></h1>
+            <p>a solo microblogging platform</p>
+        </div>
+        <div id="main-content">
+            <h1>simbl setup</h1>
+            <div id="intro-text">
+                <p>hello! thank you for using simbl :)<br>
+                simbl is a solo microblogging platform, designed with simplicity in mind.<br>
+                to get everything setup, you just need to setup the account which will be the primary admin of this simbl instance.<br><br>
+                simbl uses another one of my projects, xAPI, for authentication.<br>
+                if you are self-hosting simbl, you'll need to setup an xAPI instance.</p>
+                <hr>
+                <p>to setup simbl:<br>
+                    - enter the API URL of the simbl-server you're setting up<br>
+                    - enter an xAPI instance URL<br>
+                    - login to an account that exists on that xAPI instance<br>
+                    - return to the homepage and start posting!
+                </p>
+            </div>
+            <label for="simblapi_url">simbl-server URL</label><br><input id="simblapi_url" type="text" placeholder="https://some.url:5181/"><br>
+            <label for="xapi_url">xAPI URL</label><br><input id="xapi_url" type="text" placeholder="https://some.url:5555/"><br>
+            <label for="xapi_email">xAPI Email</label><br><input id="xapi_email" type="text"><br>
+            <label for="xapi_password">xAPI Password</label><br><input id="xapi_password" type="password"><br>
+            <p id="status-text" class="status">status text example</p>
+            <input type="button" value="< run setup >" onclick="SETUP_xLogin()">
+        </div>
+
+        <footer id="footer">
+            <p id="frontend-version"></p>
+        </footer>
+    </body>
+</html>

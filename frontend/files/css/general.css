@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+#header {
+  top: 0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#header h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 2vw;
+}
+
+#header p {
+  padding: 0;
+  margin: 0;
+  font-size: 1.15em;
+}
+
+#header a {
+  text-decoration: unset;
+  color: white;
+  font: inherit;
+}
+
+#footer {
+  margin: auto;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+
+#footer p {
+  margin: 0;
+  margin-bottom: 7px;
+  font-size: 1em;
+}
+
+#frontend-version {
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+  font-size: 1em;
+}

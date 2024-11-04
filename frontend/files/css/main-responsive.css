@@ -1,0 +1,57 @@
+
+/* less than 1920px width screen */
+@media only screen 
+and (max-width: 1919px) {
+  #header h1 {
+    font-size: 2.5vw;
+  }
+  
+  #main-content h1 {
+    font-size: 2.3vw;
+  }
+
+  .post-container {
+    width: 48vw;
+    font-size: 1.3vw;
+  }
+  #upload-post {
+    width: 47.2vw;
+  }
+  #upload-post textarea {
+    font-size: 1.3vw;
+  }
+}
+/* less than 1280px width screen */
+@media only screen 
+and (max-width: 1280px) {
+  #header h1 {
+    font-size: 4.5vw;
+  }
+  
+  #main-content h1 {
+    font-size: 2.3vw;
+  }
+
+  .post-container {
+    width: 60vw;
+    font-size: 1.8vw;
+  }
+}
+
+/* less than 1000px width screen -- most phones*/
+@media only screen 
+and (max-width: 1000px) {
+  #header h1 {
+    font-size: 5vw;
+  }
+
+  #main-content h1 {
+    font-size: 3.3vw;
+  }
+    
+  .post-container {
+    width: 80vw;
+    padding: 20px;
+    font-size: 4vw;
+  }
+}

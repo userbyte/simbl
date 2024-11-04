@@ -1,0 +1,58 @@
+@import url('main.css');
+@import url('main-responsive.css');
+
+#main-content {
+    margin: auto;
+    width: 40%;
+}
+
+#intro-text {
+    padding: 0 10px 0;
+    border: 1px solid white;
+    margin-bottom: 40px;
+}
+
+#main-content p {
+    text-align: left;
+    font-size: 1.25em;
+}
+
+label {
+    font-size: 1.20em;
+    font-weight: bold;
+}
+
+#main-content input {
+    font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
+    margin-bottom: 20px;
+    padding: 6px;
+    font-size: 1.35em;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    width: 24ch;
+}
+
+#main-content input[type="button"] {
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #181818;
+    width: 25.7ch;
+}
+
+#main-content input[type="button"]:hover {
+    background-color: #1f1f1f;
+}
+
+#main-content .status {
+    margin: 0;
+    text-align: center;
+}
+
+#main-content .status-success {
+    color: #00df04;
+}
+
+#main-content .status-error {
+    color: #df0000;
+}

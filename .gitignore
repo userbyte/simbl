@@ -1,5 +1,6 @@
 # general ignores
 *.sublime-*
+*.code-workspace
 
 # backend ignores
 backend/cfg/
@@ -9,4 +10,8 @@ venv/
 *.cpython*
 
 # frontend ignores
-# frontend/files/js/config.js
+frontend/files/js/config.js
+
+# nowhere close to done, ignore for now
+frontend-react/*
+frontend-vanilla-vitetest

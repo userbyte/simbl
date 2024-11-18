@@ -1,6 +1,7 @@
 # general ignores
 *.sublime-*
 *.code-workspace
+.fuse_hidden*
 
 # backend ignores
 backend/cfg/

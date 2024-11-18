@@ -30,7 +30,7 @@
             href="files/img/ico/simbl.ico"
             type="image/png"
         />
-        <title>simbl</title>
+        <title>simbl - setup</title>
     </head>
     <body>
         <div id="header">
@@ -43,7 +43,7 @@
                 <p>hello! thank you for using simbl :)<br>
                 simbl is a solo microblogging platform, designed with simplicity in mind.<br>
                 to get everything setup, you just need to setup the account which will be the primary admin of this simbl instance.<br><br>
-                simbl uses another one of my projects, xAPI, for authentication.<br>
+                simbl uses another one of my projects, <a href="https://github.com/userbyte/xAPI" target="_blank">xAPI</a>, for authentication.<br>
                 if you are self-hosting simbl, you'll need to setup an xAPI instance.</p>
                 <hr>
                 <p>to setup simbl:<br>
@@ -57,7 +57,7 @@
             <label for="xapi_url">xAPI URL</label><br><input id="xapi_url" type="text" placeholder="https://some.url:5555/"><br>
             <label for="xapi_email">xAPI Email</label><br><input id="xapi_email" type="text"><br>
             <label for="xapi_password">xAPI Password</label><br><input id="xapi_password" type="password"><br>
-            <p id="status-text" class="status">status text example</p>
+            <p id="status-text" class="status"></p>
             <input type="button" value="< run setup >" onclick="SETUP_xLogin()">
         </div>
 

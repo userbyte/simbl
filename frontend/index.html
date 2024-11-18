@@ -15,11 +15,12 @@
         <link rel="apple-touch-icon" href="files/pwa/simbl.png" />
         <meta name="theme-color" content="#343434" />
         <meta name="viewport" content="user-scalable=no" />
-        <link href="https://userbyte.xyz/files/fa6/css/all.css" rel="stylesheet" />
+        <link href="files/fa6/css/all.css" rel="stylesheet" />
         <link href="files/css/general.css" rel="stylesheet" />
         <link href="files/css/main.css" rel="stylesheet" />
         <link href="files/css/main-responsive.css" rel="stylesheet" />
         <link type="text/css" rel="stylesheet" id="theme_css" />
+        <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/showdown@2.0.3/dist/showdown.min.js"></script> -->
         <script type="text/javascript" src="files/js/config.js"></script>
         <script type="text/javascript" src="files/js/shared.js"></script>
         <script type="text/javascript" src="files/js/xclient.js"></script>
@@ -39,7 +40,7 @@
         <div id="main-content">
             <!-- <h1>posts</h1> -->
             <div id="upload-post">
-                <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
+                <textarea onkeyup="textAreaAdjust(this)" placeholder="..."></textarea>
                 <input type="button" value=">" id="submit-post-btn" onclick="postThePost(event)">
             </div>
             <div id="posts">

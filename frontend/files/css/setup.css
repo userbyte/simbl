@@ -1,6 +1,15 @@
 @import url('main.css');
 @import url('main-responsive.css');
 
+a {
+    color: #52bee1;
+}
+
+label {
+    font-size: 1.20em;
+    font-weight: bold;
+}
+
 #main-content {
     margin: auto;
     width: 40%;
@@ -15,11 +24,6 @@
 #main-content p {
     text-align: left;
     font-size: 1.25em;
-}
-
-label {
-    font-size: 1.20em;
-    font-weight: bold;
 }
 
 #main-content input {

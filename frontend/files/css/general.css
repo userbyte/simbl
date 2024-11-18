@@ -24,6 +24,18 @@
   color: white;
   font: inherit;
 }
+#header #backbtn {
+  background: unset;
+  border: 1px white solid;
+  color: white;
+  font-size: 1.8em;
+  margin-left: -24vw;
+  /* margin-top: -100%; */
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
 
 #footer {
   margin: auto;

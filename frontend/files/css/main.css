@@ -69,6 +69,15 @@ body {
   border-top: 1px solid white;
   padding: 0 10px 0;
   text-align: left;
+  overflow-wrap: break-word;
+  margin-bottom: 10px;
+}
+
+.post-text #post-show-more-btn {
+  cursor: pointer;
+  color: #99ccdc;
+  text-decoration: underline;
+  font-size: 1em;
 }
 
 #upload-post {
@@ -92,6 +101,7 @@ body {
   min-width: 92%;
   max-width: 92%;
   height: 4.4ch;
+  overflow: hidden;
 }
 #upload-post textarea:focus {
   outline: unset;
@@ -103,7 +113,7 @@ body {
   margin-bottom: 1px;
   margin-top: auto;
   width: 8%;
-  height: 3ch;
+  min-height: 59px;
   cursor: pointer;
   font-size: 2em;
   background-color: black;
@@ -111,4 +121,31 @@ body {
   border-left-style: unset;
   color: white;
 
+}
+
+#edit-post-btn, #delete-post-btn {
+  display: none;
+  float: right;
+  margin-right: -36px;
+  /* cursor: pointer; */
+  /* until it works, disable da buttons */
+  cursor: not-allowed;
+  opacity: 30%;
+  font-size: 1.5rem;
+  color: white;
+  background: none;
+  border: 1px solid white;
+  border-left: none;
+  min-height: 25px;
+  min-width: 35px;
+}
+
+#delete-post-btn {
+  margin-top: 10px;
+  color: red;
+}
+
+#edit-post-btn {
+  margin-top: 50px;
+  color: white;
 }

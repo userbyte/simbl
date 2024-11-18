@@ -14,9 +14,12 @@ and (max-width: 1919px) {
     width: 48vw;
     font-size: 1.3vw;
   }
+
   #upload-post {
-    width: 47.2vw;
+    width: 46.8vw;
+    font-size: 1.3vw;
   }
+
   #upload-post textarea {
     font-size: 1.3vw;
   }
@@ -36,6 +39,15 @@ and (max-width: 1280px) {
     width: 60vw;
     font-size: 1.8vw;
   }
+
+  #upload-post {
+    width: 58.6vw;
+  }
+
+  #upload-post textarea {
+    font-size: 1.8vw;
+  }
+
   #version-text {
     font-size: 1.8vw;
   }
@@ -55,6 +67,14 @@ and (max-width: 1000px) {
   .post-container {
     width: 80vw;
     padding: 20px;
+    font-size: 4vw;
+  }
+
+  #upload-post {
+    width: 81vw;
+  }
+
+  #upload-post textarea {
     font-size: 4vw;
   }
 }

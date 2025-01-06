@@ -3,6 +3,7 @@ import path from "path";
 import { writeFile } from "fs/promises";
 import { GetSession } from "../../authv2";
 
+// POST /api/user/setpfp
 export const POST = async (req, res) => {
   const user = await GetSession().name;
   const formData = await req.formData();

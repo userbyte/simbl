@@ -1,5 +1,5 @@
 // API Route
-// /api/user/pfp
+// /api/user
 
 import { GetSession } from "../authv2";
 

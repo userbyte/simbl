@@ -38,7 +38,12 @@ export async function POST(request: Request) {
       console.log("saving post: ", body.post);
       const sp = await SavePost(body.post);
       if (sp === false) {
-        return false;
+        return new Response(
+          JSON.stringify({ status: "failed", error: "failed to save post" }),
+          {
+            status: 500,
+          }
+        );
       } else {
         return new Response(JSON.stringify({ status: "success", post: sp }), {
           status: 200,

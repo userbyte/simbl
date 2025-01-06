@@ -155,8 +155,8 @@ export async function SavePost(post: Post) {
     db.data.posts.push(post_);
     await db.write();
     return post_;
-  } catch {
-    console.log("SavePost err");
+  } catch (error) {
+    console.log("SavePost err:", error);
     return false;
   }
 }

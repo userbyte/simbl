@@ -7,4 +7,4 @@ a solo microblogging platform
 its like twitter, but for one person.
 
 ## how do i set this up for myself?
-see SETUP.MD for more details
+see SETUP.MD for details

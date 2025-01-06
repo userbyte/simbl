@@ -83,9 +83,6 @@
     width: 60vw;
     font-size: 1.8vw;
   }
-  .post_timestamp {
-    font-size: 3.4vw;
-  }
 }
 
 /* less than 1000px width screen -- most phones*/
@@ -93,5 +90,8 @@
   .post_container {
     width: 85vw;
     font-size: 4vw;
+  }
+  .post_timestamp {
+    font-size: 3.4vw;
   }
 }

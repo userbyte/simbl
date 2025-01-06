@@ -3,6 +3,7 @@
 
 import { FormEvent } from "react";
 import styles from "./page.module.css";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function uploadHandler(event: { target: { files: (string | Blob)[] } }) {
   const data = new FormData();
   data.append("file", event.target.files[0]);
@@ -68,7 +69,7 @@ export default function SetupPage() {
           <input
             type="file"
             name="file"
-            onChange={uploadHandler}
+            // onChange={uploadHandler}
             accept="image/jpeg,image/png,image/webp"
           />
           <label htmlFor="username_input">username</label>

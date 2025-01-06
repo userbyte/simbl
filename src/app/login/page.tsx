@@ -1,6 +1,6 @@
 "use client";
 import { redirect } from "next/navigation";
-import { GetSession, Login, Logout } from "@/app/api/authv2";
+// import { GetSession, Login, Logout } from "@/app/api/authv2";
 import { FormEvent } from "react";
 import styles from "../style/module/Login.module.css";
 

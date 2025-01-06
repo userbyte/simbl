@@ -1,6 +1,14 @@
-import { SignJWT, jwtVerify } from "jose";
+import {
+  JWTPayload,
+  // JWTVerifyResult,
+  // KeyLike,
+  // ResolvedKey,
+  SignJWT,
+  jwtVerify,
+} from "jose";
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+// import { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 export const ACCESS_TOKEN_EXPIRE = "5 min from now";
 export const REFRESH_TOKEN_EXPIRE = "90 days from now";
@@ -16,7 +24,7 @@ if (secretKey === undefined) {
 }
 const key = new TextEncoder().encode(secretKey);
 
-export async function Encrypt(payload: any) {
+export async function Encrypt(payload: JWTPayload) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -24,7 +32,7 @@ export async function Encrypt(payload: any) {
     .sign(key);
 }
 
-export async function Encrypt_Refresh(payload: any) {
+export async function Encrypt_Refresh(payload: JWTPayload) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -32,7 +40,9 @@ export async function Encrypt_Refresh(payload: any) {
     .sign(key);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function Decrypt(input: string): Promise<any> {
+  // ): Promise<JWTVerifyResult<JWTPayload> & ResolvedKey<KeyLike>> {
   try {
     const { payload } = await jwtVerify(input, key, {
       algorithms: ["HS256"],
@@ -92,7 +102,7 @@ export async function GetSession() {
   return await Decrypt(session);
 }
 
-export async function UpdateSession(request: NextRequest) {
+export async function UpdateSession() {
   // get refresh token
   const session = (await cookies()).get("tkrefresh")?.value;
   if (!session) return;

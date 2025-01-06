@@ -1,22 +1,22 @@
 // authentication module
 
 import crypto from "crypto";
-import { NextRequest } from "next/server";
+// import { NextRequest } from "next/server";
 import { db, GetUser, User } from "./db";
 
-function GenerateToken(length: number) {
-  // generates salt for hashing purposes
-  let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
-}
+// function GenerateToken(length: number) {
+//   // generates a token for hashing purposes
+//   let result = "";
+//   const characters =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//   const charactersLength = characters.length;
+//   let counter = 0;
+//   while (counter < length) {
+//     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//     counter += 1;
+//   }
+//   return result;
+// }
 
 function UsernameToUser(username: string) {
   // get a user object by its username
@@ -58,15 +58,4 @@ export function AuthenticateWithCredentials(
     }
   }
   return false;
-}
-
-export function TokenToUser(token: string) {
-  const users = db.data.users;
-  users.forEach((user) => {
-    console.log(`${user}`);
-  });
-}
-
-export function VerifyToken(token: string) {
-  const users = db.data.users;
 }

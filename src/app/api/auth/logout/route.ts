@@ -3,7 +3,7 @@
 
 import { Logout } from "../../authv2";
 
-export async function GET(request: Request) {
+export async function GET() {
   // logout the user
 
   await Logout();

@@ -4,7 +4,7 @@
 import { GetSession } from "../authv2";
 
 // GET /api/user
-export async function GET(request: Request) {
+export async function GET() {
   // gets user information from the session
 
   const session = await GetSession();

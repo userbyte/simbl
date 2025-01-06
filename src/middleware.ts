@@ -1,7 +1,7 @@
-import { NextRequest } from "next/server";
+// import { NextRequest } from "next/server";
 import { UpdateSession } from "@/app/api/authv2";
 
-export async function middleware(request: NextRequest) {
+export async function middleware() {
   console.log("MIDDLEWARE FIRED");
-  return await UpdateSession(request);
+  return await UpdateSession();
 }

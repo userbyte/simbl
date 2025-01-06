@@ -1,0 +1,97 @@
+.post_container {
+  margin: auto;
+  margin-bottom: 18px;
+  border: 1px solid white;
+  width: 30vw;
+  font-size: 0.8vw;
+}
+
+.post_content {
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+}
+
+.post_info {
+  display: flex;
+  border-bottom-width: 0px;
+}
+
+.post_author {
+  display: flex;
+  align-items: center;
+  color: #e4e4e4;
+  font-weight: bold;
+}
+
+.post_author p {
+  padding: 0;
+}
+
+.post_author picture {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.post_author picture img {
+  width: 3rem;
+  border: 1px solid #9f9f9f;
+  color: white;
+}
+
+.post_timestamp {
+  color: #8e8e8e;
+  margin-left: auto;
+  min-width: fit-content;
+  align-content: center;
+}
+
+.post_timestamp p {
+  padding: 0;
+  padding-right: 15px;
+}
+
+.post_text {
+  border-top: 1px solid white;
+  padding: 0 10px 0;
+  text-align: left;
+  overflow-wrap: break-word;
+  margin-bottom: 10px;
+}
+
+.post_text #post_show-more-btn {
+  cursor: pointer;
+  color: #99ccdc;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+/* responsive shit */
+/* gave up on trying to make this shit work without media queries lol */
+
+/* 1920px width screen */
+@media only screen and (max-width: 1920px) {
+  .post_container {
+    width: 36vw;
+    font-size: 1.1vw;
+  }
+}
+
+/* less than 1280px width screen */
+@media only screen and (max-width: 1280px) {
+  .post_container {
+    width: 60vw;
+    font-size: 1.8vw;
+  }
+  .post_timestamp {
+    font-size: 3.4vw;
+  }
+}
+
+/* less than 1000px width screen -- most phones*/
+@media only screen and (max-width: 1000px) {
+  .post_container {
+    width: 85vw;
+    font-size: 4vw;
+  }
+}

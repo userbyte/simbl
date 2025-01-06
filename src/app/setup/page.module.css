@@ -1,0 +1,74 @@
+.main {
+  margin: auto;
+  width: 40%;
+  background-color: black;
+  text-align: center;
+}
+.main h1 {
+  text-decoration: underline;
+  font-size: 1.3vw;
+  margin-bottom: 14px;
+}
+
+.intro_text {
+  padding: unset;
+  margin: unset;
+  padding: 2px 10px;
+  border: 1px solid white;
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 1.25em;
+}
+.intro_text p {
+  padding: 16px 0;
+}
+
+.main form input,
+.main form button {
+  display: block;
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 6px;
+  font-size: 1.35em;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  width: 24ch;
+}
+
+.main form label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.main form button[type="submit"] {
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #181818;
+  width: 24.15ch;
+}
+
+.main form button[type="submit"]:hover {
+  background-color: #1f1f1f;
+}
+
+.status_text {
+  display: none;
+  font-size: 1.3em;
+  border: 1px solid white;
+  color: white;
+  width: fit-content;
+  margin: auto;
+  padding: 6px;
+}
+
+.status_text[status_type="good"] {
+  border-color: #007600;
+  color: #91ff92;
+}
+
+.status_text[status_type="bad"] {
+  border-color: #9e0000;
+  color: #ff9d9d;
+}

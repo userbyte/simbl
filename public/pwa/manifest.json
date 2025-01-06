@@ -1,0 +1,18 @@
+{
+  "short_name": "simbl",
+  "name": "simbl",
+  "start_url": "/",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "description": "a solo microblogging platform",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "../img/png/logo_nomask.png",
+      "sizes": "750x750",
+      "type": "image/png",
+      "density": "1.0"
+    }
+  ]
+}

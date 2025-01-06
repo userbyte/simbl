@@ -1,0 +1,13 @@
+.footer {
+  position: fixed;
+  left: 0px;
+  bottom: 10px;
+  width: 100%;
+  opacity: 78%;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1vh;
+  text-align: center;
+}
+.footer a {
+  text-decoration: underline;
+}

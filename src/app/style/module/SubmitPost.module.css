@@ -1,0 +1,93 @@
+.upload_post {
+  /* display: none; */
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+  margin: auto;
+  margin-bottom: 18px;
+  border: 1px solid white;
+  width: 29.92vw;
+  padding: 10px;
+  min-height: fit-content;
+  font-size: 0.8vw;
+  text-align: left;
+}
+
+.upload_post p {
+  width: fit-content;
+  margin: auto;
+  padding: 5px 5px;
+  margin-top: 7px;
+  text-align: center;
+  background-color: #424242;
+  font-weight: bold;
+}
+
+.upload_post form {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.upload_post textarea {
+  font-size: inherit;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 0;
+  color: white;
+  min-width: 92%;
+  max-width: 92%;
+  height: 4.4ch;
+  overflow: hidden;
+  margin: unset;
+  padding: 2px;
+}
+
+.upload_post textarea:focus {
+  outline: unset;
+}
+
+.upload_post input[type="submit"] {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1px;
+  margin-top: auto;
+  width: 8%;
+  min-height: 59px;
+  cursor: pointer;
+  font-size: 2em;
+  background-color: black;
+  border: 1px solid white;
+  border-left-style: unset;
+  border-radius: 0;
+  color: white;
+}
+
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+/* responsive shit */
+
+/* 1920px width screen */
+@media only screen and (max-width: 1920px) {
+  .upload_post {
+    width: 36vw;
+    font-size: 1.1vw;
+  }
+}
+
+/* less than 1280px width screen */
+@media only screen and (max-width: 1280px) {
+  .upload_post {
+    width: 60vw;
+    font-size: 1.8vw;
+  }
+  .post_timestamp {
+    font-size: 3.4vw;
+  }
+}
+
+/* less than 1000px width screen -- most phones*/
+@media only screen and (max-width: 1000px) {
+  .upload_post {
+    width: 85vw;
+    font-size: 4vw;
+  }
+}

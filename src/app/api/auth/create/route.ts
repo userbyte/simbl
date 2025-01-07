@@ -3,7 +3,7 @@
 
 import { cookies } from "next/headers";
 import { Encrypt, Encrypt_Refresh } from "../../authv2";
-import { CreateUser } from "../../db";
+import { CreateUser, InitializeDB } from "../../db";
 import { db } from "../../db";
 
 // POST /api/post
@@ -12,12 +12,14 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    console.log("creating user: ", body);
+    console.log("creating user: ", body.username);
     let role = "user";
     // is this the first user
     if (db.data.users.length === 0) {
       // if it is, make em admin
       role = "admin";
+      // also, make sure db is initialized... just incase
+      await InitializeDB();
     }
     const cu = await CreateUser(body.username, body.password, role);
     if (cu[0] === false) {
@@ -57,6 +59,7 @@ export async function POST(request: Request) {
       });
     }
   } catch (err) {
+    console.log(err);
     return new Response(JSON.stringify({ status: "failed", error: err }), {
       status: 400,
     });

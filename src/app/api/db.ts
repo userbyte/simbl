@@ -5,6 +5,8 @@ import { JSONFilePreset } from "lowdb/node";
 // import crypto from "crypto";
 import { GeneratePostID, UnixTimestampNow } from "../shared";
 import { HashPW } from "./auth";
+import fs from "fs";
+import path from "path";
 
 // db schema
 export type User = {
@@ -28,12 +30,21 @@ export type Data = {
 
 // initial db
 const defaultData: Data = { users: [], posts: [] };
-export const db = await JSONFilePreset<Data>("db.json", defaultData);
+const db_file = path.resolve("./data/db.json");
+export const db = await JSONFilePreset<Data>(db_file, defaultData);
 
 /// database functions ///
 export async function InitializeDB() {
-  // just write to the database, should pull in defaultData
+  // ensure data dir exists
+  const dir = "./data";
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  // write to the database: creates the file, and pulls in defaultData
   await db.write();
+
+  console.log(`initialized db: ${db_file}`);
 }
 
 export function GenerateSalt(length: number) {

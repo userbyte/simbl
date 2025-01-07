@@ -50,3 +50,4 @@ db.json
 public/fa6/
 public/img/pfp/*
 .eslintrc.json
+data/

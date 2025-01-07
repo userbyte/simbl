@@ -103,15 +103,23 @@ export async function GetSession() {
 }
 
 export async function UpdateSession() {
+  const res = NextResponse.next();
+
   // get refresh token
   const session = (await cookies()).get("tkrefresh")?.value;
   if (!session) return;
 
   // create a fresh access token for the user
   const parsed = await Decrypt(session);
+  if (parsed === false) {
+    // cookie is invalid, delete it
+    // this will log the user out, but that doesnt matter their cookie broke anyway
+    res.cookies.delete("tkaccess");
+    res.cookies.delete("tkrefresh");
+    return res;
+  }
   // expire 15 minutes from now
   parsed.expires = new Date(Date.now() + 900 * 1000);
-  const res = NextResponse.next();
   res.cookies.set({
     name: "tkaccess",
     value: await Encrypt(parsed),

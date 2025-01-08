@@ -145,6 +145,7 @@ export async function GetPosts() {
   // gets all posts
   const posts = db.data.posts;
   if (posts === undefined) {
+    console.error("GetPosts: database error, posts is undefined");
     return false;
   }
   return posts;

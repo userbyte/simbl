@@ -140,9 +140,10 @@ export default function SubmitPost() {
         await sleep(1500);
         setStatusText("");
         // alert("post submitted");
-
-        // bandage fix, proper solution requires a significant rework of the PostList component, so that'll come later
-        router.refresh();
+        if (location.pathname === "/") {
+          // bandage fix, proper solution requires a significant rework of the PostList component, so that'll come later
+          router.push("/");
+        }
       } else {
         setStatusText("post submission failed");
         await sleep(3750);

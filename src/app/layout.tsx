@@ -4,6 +4,7 @@ import "./globals.css";
 import { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://simbl.userbyte.xyz"),
   title: "simbl",
   description: "a dumb little microblog",
   keywords: ["microblog", "twitter clone"],

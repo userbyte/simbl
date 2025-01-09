@@ -22,11 +22,20 @@ export async function generateMetadata({
     authors: [{ name: post.author }],
     openGraph: {
       siteName: "simbl",
-      type: "article",
       description: `${post.text}
 
       [${PrettifyUnixTime(post.timestamp)}]`,
-      images: "/img/png/logo.png",
+      images: [
+        {
+          url: "https://simbl.userbyte.xyz/img/png/logo.png",
+          width: 175,
+          height: 175,
+        },
+      ],
+    },
+    twitter: {
+      // image too big on discord embed, so we unset
+      images: [],
     },
   };
 }

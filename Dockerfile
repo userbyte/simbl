@@ -40,6 +40,14 @@ RUN \
 FROM base AS runner
 WORKDIR /app
 
+# Timezone bullshit
+# default to UTC
+ARG TZ=Etc/GMT
+RUN apk add --no-cache tzdata \
+&& echo "Timezone of this image will be: $TZ" \
+&& ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+&& echo $TZ > /etc/timezone
+
 ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED=1

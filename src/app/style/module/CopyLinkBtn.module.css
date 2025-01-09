@@ -1,8 +1,9 @@
 .copylinkbtn {
-  float: right;
-  margin-top: -1.6em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   padding: 0;
-  height: 20px;
+  height: auto;
 }
 .copylinkbtn button {
   font-size: inherit;

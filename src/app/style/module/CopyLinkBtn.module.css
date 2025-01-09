@@ -6,10 +6,16 @@
 }
 .copylinkbtn button {
   font-size: inherit;
+  font-family: Source Code Pro, Courier New, Courier, monospace;
+  color: #c9c9c9;
   cursor: pointer;
   border: unset;
   border-top: 1px solid white;
   border-left: 1px solid white;
   background: unset;
   padding: 3px;
+}
+
+.copylinkbtn button:hover {
+  color: white;
 }

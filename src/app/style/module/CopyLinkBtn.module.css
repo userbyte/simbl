@@ -1,0 +1,15 @@
+.copylinkbtn {
+  float: right;
+  margin-top: -1.6em;
+  padding: 0;
+  height: 20px;
+}
+.copylinkbtn button {
+  font-size: inherit;
+  cursor: pointer;
+  border: unset;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  background: unset;
+  padding: 3px;
+}

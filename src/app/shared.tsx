@@ -218,6 +218,7 @@ export function PostObjectElement(
           <p>{text_content}</p>
         </div>
       </div>
+      <CopyLinkBtn link={`/post/${id}`} useOrigin="true" />
     </div>
   );
 
@@ -356,6 +357,7 @@ export function PostObjectElement(
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GetPost, EditPost, DeletePost } from "./api/db";
+import CopyLinkBtn from "./components/CopyLinkBtn";
 
 export const HandleEdit = async (data: FormData) => {
   console.log(data);

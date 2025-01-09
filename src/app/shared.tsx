@@ -199,9 +199,9 @@ export function PostObjectElement(
           <div className={post_styles.post_author}>
             <picture>
               {/* <source srcset="files/img/webp/default_pfp.webp" type="image/webp"> */}
-              <source srcSet={`api/user/pfp/${author}`} />
-              <source srcSet="img/svg/default_pfp.svg" type="image/svg" />
-              <source srcSet="img/png/default_pfp.png" type="image/png" />
+              <source srcSet={`/api/user/pfp/${author}`} />
+              <source srcSet="/img/svg/default_pfp.svg" type="image/svg" />
+              <source srcSet="/img/png/default_pfp.png" type="image/png" />
               <img
                 src="img/png/default_pfp.png"
                 alt="pfp"

@@ -9,12 +9,19 @@ async function buildPostList() {
   // i have to await this for the reverse order to work later, i dont understand it but it works so whatever
   await GetPosts().then((posts) => {
     if (posts === false) {
+      // no posts could be found, return empty element
       post_el_list.push(<></>);
     } else {
+      // sort posts by their timestamp
+      posts.sort((a, b) => a.timestamp - b.timestamp);
+
+      // create a post object element for every post
       posts.forEach((post) => {
         GetPost(post.id).then((post_obj) => {
           if (post_obj != false) {
             const post_el = PostObjectElement(post_obj);
+
+            // add post element to list
             post_el_list.push(post_el);
           }
         });

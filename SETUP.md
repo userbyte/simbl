@@ -23,7 +23,7 @@ docker create -p $PORT:3000 -v $NAME:/app -e JWT_SECRET=$SECRET --name $NAME --r
 ```sh
 docker start $NAME
 ```
-(jump to last section)
+[jump to last section](#both-node-and-docker)
 
 ---
 
@@ -60,7 +60,7 @@ yarn run build
 ```sh
 node .next/standalone/server.js
 ```
-(jump to last section)
+[jump to last section](#both-node-and-docker)
 
 ---
 

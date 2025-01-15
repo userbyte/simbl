@@ -14,7 +14,7 @@ export async function GET(
   try {
     const username = (await params).username;
     console.log("getting pfp: ", username);
-    const filePath = path.resolve(`./public/img/pfp/${username}`);
+    const filePath = path.resolve(`./data/pfp/${username}`);
     const imageBuffer = fs.readFileSync(filePath);
 
     return new Response(imageBuffer);

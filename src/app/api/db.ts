@@ -40,6 +40,11 @@ export async function InitializeDB() {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
+  // ensure data dir exists
+  const pfpdir = "./data/pfp";
+  if (!fs.existsSync(pfpdir)) {
+    fs.mkdirSync(pfpdir);
+  }
 
   // write to the database: creates the file, and pulls in defaultData
   await db.write();

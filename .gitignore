@@ -48,6 +48,5 @@ db.json
 
 *.bak
 public/fa6/
-public/img/pfp/*
 .eslintrc.json
 data/

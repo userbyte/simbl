@@ -20,10 +20,7 @@ export const POST = async (req: Request) => {
   const filename = username.replaceAll(" ", "_");
   console.log("setting the pfp of:", username);
   try {
-    await writeFile(
-      path.join(process.cwd(), "public/img/pfp/" + filename),
-      buffer
-    );
+    await writeFile(path.join(process.cwd(), "data/pfp/" + filename), buffer);
     return NextResponse.json({ status: "success" }, { status: 201 });
   } catch (error) {
     console.log("/api/user/setpfp :: error:", error);

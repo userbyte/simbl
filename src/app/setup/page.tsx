@@ -3,42 +3,72 @@
 
 import { FormEvent } from "react";
 import styles from "./page.module.css";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function uploadHandler(event: { target: { files: (string | Blob)[] } }) {
-  const data = new FormData();
-  data.append("file", event.target.files[0]);
-}
+import { sleep } from "../shared";
+import { useRouter } from "next/navigation";
 
 export default function SetupPage() {
+  const router = useRouter();
+
   async function handleSetup(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const status_text = document.getElementById("status_text");
+    function setStatus(type: "good" | "meh" | "bad", text: string) {
+      if (status_text != null) {
+        status_text.style.display = "block";
+        status_text.textContent = text;
+        status_text.setAttribute("status_type", type);
+      } else {
+        alert(text);
+      }
+    }
 
     const formData = new FormData(event.currentTarget);
     const username = formData.get("username");
     const password = formData.get("password");
 
-    const response = await fetch("/api/auth/create", {
+    const response_create = await fetch("/api/auth/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
 
-    const status_text = document.getElementById("status_text");
-    const res_json = await response.json();
-    if (response.ok) {
-      // router.push("/profile");
-      if (status_text != null) {
-        status_text.style.display = "block";
-        status_text.textContent = `user creation success`;
-        status_text.setAttribute("status_type", "good");
+    const res_json = await response_create.json();
+
+    // I LOVE NESTED IFS!!!! ill fix later... probably
+    if (response_create.ok) {
+      // ok the account was created successfully, lets set the PFP if they set one
+      let response_pfp;
+      let res2_json;
+      if (!formData.get("file")) {
+        // no pfp file was provided, lets pretend it was and move on
+        response_pfp = { ok: true };
+        res2_json = {};
+      } else {
+        response_pfp = await fetch("/api/user/setpfp", {
+          method: "POST",
+          body: formData,
+        });
+        res2_json = await response_pfp.json();
+      }
+
+      if (response_pfp.ok) {
+        setStatus(
+          "good",
+          `user creation success :), navigating back to homepage...`
+        );
+        await sleep(2000);
+        router.push("/");
+      } else {
+        // report pfp set errors
+        setStatus(
+          "meh",
+          `account was created, but the pfp could not be set: ${res2_json.error}`
+        );
       }
     } else {
-      // handle errors
-      if (status_text != null) {
-        status_text.style.display = "block";
-        status_text.textContent = `${res_json.error}`;
-        status_text.setAttribute("status_type", "bad");
-      }
+      // report user create errors
+      setStatus("bad", `${res_json.error}`);
     }
   }
 

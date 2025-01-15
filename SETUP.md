@@ -16,7 +16,11 @@ docker pull userbyte/simbl:latest
 export NAME="simbl" \
 export PORT="..." \
 export SECRET="..." \
-docker create -p $PORT:3000 -v $NAME:/app -e JWT_SECRET=$SECRET --name $NAME --restart always userbyte/simbl:latest
+docker create -p $PORT:3000 \
+ --volume $NAME:/app \
+ --env JWT_SECRET=$SECRET \
+ --name $NAME \
+ \ --restart always userbyte/simbl:latest
 ```
 
 **start the container**

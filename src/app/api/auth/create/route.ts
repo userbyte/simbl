@@ -11,8 +11,8 @@ export async function POST(request: Request) {
   // creates a user
 
   try {
-    const body = await request.json();
-    console.log("creating user: ", body.username);
+    const body_json = await request.json();
+    console.log("creating user: ", body_json.username);
     let role = "user";
     // is this the first user
     if (db.data.users.length === 0) {
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       // also, make sure db is initialized... just incase
       await InitializeDB();
     }
-    const cu = await CreateUser(body.username, body.password, role);
+    const cu = await CreateUser(body_json.username, body_json.password, role);
     if (cu[0] === false) {
       if (cu[1] === "exists") {
         // user creation failed, user already exists

@@ -11,4 +11,4 @@ its like twitter, but for one person.
 finally, a place to yell your bullshit into the void.
 
 ## how do i set this up for myself?
-see SETUP.MD for details
+see [SETUP.md](SETUP.md) for details

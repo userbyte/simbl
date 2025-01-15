@@ -44,12 +44,13 @@ yarn install
 ```
 
 **set the `JWT_SECRET` environment variable to something super incredibly secret (required) ⚠**
+
+*[spoooky secret generator api](https://api.stringgy.com/?length=30&amount=1&type=ALLNOSYMBOLS)*
 ```sh
 # .env
 
 JWT_SECRET="something_secret"
 ```
-
 **build**
 ```sh
 yarn run build

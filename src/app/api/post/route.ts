@@ -2,8 +2,29 @@
 // /api/post
 
 import { Decrypt } from "../authv2";
-import { SavePost } from "../db";
+import { GetPosts, Post, SavePost } from "../db";
 import { cookies } from "next/headers";
+
+// GET /api/post
+export async function GET() {
+  // returns all posts in the database
+
+  const posts: Post[] | false = await GetPosts();
+  if (!posts) {
+    // no posts were found, or there was a database error
+    return new Response(JSON.stringify({ posts: {} }), { status: 200 });
+  }
+
+  // omit any posts with privacy set to "hidden" or "private"
+  const posts_: Post[] = [];
+  posts.forEach((post) => {
+    if (post.privacy === "public" || post.privacy === undefined) {
+      posts_.push(post);
+    }
+  });
+
+  return new Response(JSON.stringify({ posts: posts_ }), { status: 200 });
+}
 
 // POST /api/post
 export async function POST(request: Request) {

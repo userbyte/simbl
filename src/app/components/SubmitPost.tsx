@@ -120,6 +120,7 @@ export default function SubmitPost() {
         body: JSON.stringify({
           post: {
             text: text_content,
+            privacy: "public",
           },
         }),
         credentials: "include", // Include session cookie if applicable

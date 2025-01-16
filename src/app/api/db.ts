@@ -21,6 +21,11 @@ export type Post = {
   timestamp: number;
   author: string;
   text: string;
+
+  // public: shown on GET /api/post, and main PostList
+  // hidden: not shown on GET /api/post, or main PostList, but still can be got via its ID (GET /api/post/[id])
+  // private: same as hidden, but cant be got even by ID
+  privacy?: "public" | "hidden" | "private";
   // images: base64[]; // idk how to add this one
 };
 export type Data = {

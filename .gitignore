@@ -50,3 +50,4 @@ db.json
 public/fa6/
 .eslintrc.json
 data/
+push-and-update-prod.sh

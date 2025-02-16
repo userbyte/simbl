@@ -180,7 +180,7 @@ export function PostObjectElement(
     //   </div>
     // </div>
 
-    <div className={post_styles.post_container} id={`post-${id}`}>
+    <div className={post_styles.post_container} id={`post-${id}`} key={id}>
       {/* <button id="edit-post-btn" style="display: block;">
         <i className="fas fa-edit" />
       </button>

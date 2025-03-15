@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "jose": "^5.9.6",
+    "jose": "^5.10.0",
     "lowdb": "^7.0.1",
     "next": "^15.1.2",
     "react": "19.0.0-rc-66855b96-20241106",

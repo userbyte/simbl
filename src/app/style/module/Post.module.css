@@ -8,7 +8,7 @@
 }
 
 .post_content {
-  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+  font-family: var(--font-source-code-pro);
 }
 
 .post_info {

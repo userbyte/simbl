@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
-@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap");
-
 :root {
   --background: #000000;
   --foreground: #ffffff;
@@ -22,7 +19,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Afacad Flux", sans-serif;
+  font-family: var(--font-afacad-flux), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

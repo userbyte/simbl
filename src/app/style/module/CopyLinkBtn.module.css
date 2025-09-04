@@ -7,7 +7,7 @@
 }
 .copylinkbtn button {
   font-size: inherit;
-  font-family: Source Code Pro, Courier New, Courier, monospace;
+  font-family: var(--font-source-code-pro);
   color: #c9c9c9;
   cursor: pointer;
   border: unset;

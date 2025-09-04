@@ -1,7 +1,20 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import "./globals.css";
 import { Metadata, Viewport } from "next";
+import { Afacad_Flux, Source_Code_Pro } from "next/font/google";
+import "./globals.css";
+
+const font_AfacadFlux = Afacad_Flux({
+  subsets: ["latin"],
+  variable: "--font-afacad-flux",
+  display: "swap",
+});
+const font_SourceCodePro = Source_Code_Pro({
+  subsets: ["latin"],
+  variable: "--font-source-code-pro",
+  fallback: ["Courier New", "Courier", "monospace"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://simbl.userbyte.xyz"),
@@ -36,7 +49,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${font_AfacadFlux.variable} ${font_SourceCodePro.variable}`}
+    >
       <body>
         <Header />
         {children}

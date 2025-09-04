@@ -11,7 +11,7 @@
 .login_form input,
 .login_form button {
   display: block;
-  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+  font-family: var(--font-source-code-pro);
   margin: auto;
   margin-bottom: 20px;
   padding: 6px;

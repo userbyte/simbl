@@ -4,7 +4,7 @@
   bottom: 10px;
   width: 100%;
   opacity: 78%;
-  font-family: "Source Code Pro", monospace;
+  font-family: var(--font-source-code-pro);
   font-size: 1vh;
   text-align: center;
   margin: auto;

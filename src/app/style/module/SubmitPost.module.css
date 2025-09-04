@@ -1,6 +1,6 @@
 .upload_post {
   /* display: none; */
-  font-family: "Source Code Pro", "Courier New", Courier, monospace;
+  font-family: var(--font-source-code-pro);
   margin: auto;
   margin-bottom: 18px;
   border: 1px solid white;

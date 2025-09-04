@@ -2,7 +2,7 @@
   top: 0;
   text-align: center;
   margin-bottom: 30px;
-  font-family: "Afacad Flux", sans-serif;
+  font-family: var(--font-afacad-flux);
 }
 
 .header h1 {

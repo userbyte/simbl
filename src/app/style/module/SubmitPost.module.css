@@ -30,6 +30,7 @@
 
 .upload_post textarea {
   font-size: inherit;
+  font-family: inherit;
   background-color: black;
   border: 1px solid white;
   border-radius: 0;

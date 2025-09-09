@@ -3,6 +3,7 @@ import { PostObjectElement, PrettifyUnixTime } from "@/app/shared";
 import BackBtn from "@/app/components/BackBtn";
 import styles from "./page.module.css";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -47,7 +48,15 @@ export default async function PostPage({
 }) {
   const postID = (await params).postID;
   const post = await GetPost(postID);
-  if (!post) return <p>post {postID} does not exist</p>;
+  if (!post)
+    return (
+      <>
+        <div className={styles.postpage_404}>
+          <h1>error: could not find a post by the ID of "{postID}"</h1>
+          <Link href="/">back to homepage</Link>
+        </div>
+      </>
+    );
   const postobj = PostObjectElement(post);
   return (
     <>

@@ -6,6 +6,19 @@
   margin-top: 30vh;
 }
 
+.postpage_404 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.postpage_404 a {
+  text-decoration: underline;
+}
+
 /* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
 /* responsive shit */
 /* gave up on trying to make this shit work without media queries lol */

@@ -57,35 +57,23 @@ export function AutoAdjustTextarea({
   );
 }
 
-// totally not AI generated code... i didnt give up on writing isLoggedIn by myself, what are you talking about?
-
 export default function SubmitPost() {
   const router = useRouter();
-  const [status_text, setStatusText] = useState("");
 
+  // states
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [status_text, setStatusText] = useState("");
+  const [loadingStatus, setLoadingStatus] = useState(false);
+
+  // refs
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [textAreaValue, setTextAreaValue] = React.useState("");
-  // const onChange = (event: {
-  //   target: { value: React.SetStateAction<string> };
-  // }) => setTextAreaValue(event.target.value);
 
-  // React.useLayoutEffect(() => {
-  //   if (textareaRef.current) {
-  //     // Check if ref is valid
-  //     textareaRef.current.style.height = `${Math.max(
-  //       textareaRef.current.scrollHeight,
-  //       MIN_TEXTAREA_HEIGHT
-  //     )}px`;
-  //   }
-  // }, [textAreaValue]);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  // totally not AI generated code... i didnt give up on writing isLoggedIn by myself, what are you talking about?
   useEffect(() => {
-    // Check for user session here (e.g., using local storage or a backend API)
     const checkSession = async () => {
       try {
-        const response = await fetch("/api/user"); // Replace with your actual API endpoint
+        const response = await fetch("/api/user");
         if (response.ok) {
           setIsLoggedIn(true);
         } else {
@@ -93,7 +81,7 @@ export default function SubmitPost() {
         }
       } catch (error) {
         console.error("Error checking session:", error);
-        setIsLoggedIn(false); // Or handle the error differently
+        setIsLoggedIn(false);
       }
     };
     checkSession();
@@ -123,10 +111,15 @@ export default function SubmitPost() {
             privacy: "public",
           },
         }),
-        credentials: "include", // Include session cookie if applicable
+        credentials: "include", // include session cookie
       });
+      // show loading
+      setLoadingStatus(true);
 
       if (response.ok) {
+        // hide loading
+        setLoadingStatus(false);
+
         // add post to PostList
         // ...TODO...
 
@@ -159,7 +152,14 @@ export default function SubmitPost() {
   return (
     <>
       {isLoggedIn ? (
-        <div className={styles.upload_post}>
+        <div className={styles.main}>
+          {loadingStatus ? (
+            <div className="loading_overlay">
+              <span className="loader"></span>
+            </div>
+          ) : (
+            <></>
+          )}
           <form onSubmit={handleSubmit}>
             <AutoAdjustTextarea
               ref={textareaRef}

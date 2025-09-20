@@ -51,8 +51,6 @@ export function AuthenticateWithCredentials(
     // hash entered password
     const hashed = HashPW(target.salt, password);
     // check result against db
-    console.log(hashed);
-    console.log(target.password);
     if (hashed === target.password) {
       return GetUser(target.id);
     }

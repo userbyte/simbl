@@ -139,6 +139,7 @@ export default function SubmitPost() {
           router.push("/");
         }
       } else {
+        setLoadingStatus(false);
         setStatusText("post submission failed");
         await sleep(3750);
         setStatusText("");

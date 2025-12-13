@@ -12,8 +12,8 @@
     "jose": "^5.9.6",
     "lowdb": "^7.0.1",
     "next": "^15.5.9",
-    "react": "19.0.1",
-    "react-dom": "19.0.1"
+    "react": "19.0.3",
+    "react-dom": "19.0.3"
   },
   "devDependencies": {
     "@types/node": "^20",

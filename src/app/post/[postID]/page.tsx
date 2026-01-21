@@ -52,7 +52,9 @@ export default async function PostPage({
     return (
       <>
         <div className={styles.postpage_404}>
-          <h1>error: could not find a post by the ID of "{postID}"</h1>
+          <h1>
+            error: could not find a post by the ID of &quot;{postID}&quot;
+          </h1>
           <Link href="/">back to homepage</Link>
         </div>
       </>

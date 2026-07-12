@@ -1,33 +1,14 @@
 // database module
 
-import { JSONFilePreset } from "lowdb/node";
-
-// import crypto from "crypto";
-import { generatePostID, unixTimestampNow } from "../shared";
-import { hashPW } from "./auth";
 import fs from "fs";
 import path from "path";
+import { JSONFilePreset } from "lowdb/node";
+// import crypto from "crypto";
+import { generatePostID, unixTimestampNow } from "./shared";
+import { hashPW } from "../api/auth";
+import { User } from "./models/user";
+import { Post } from "./models/post";
 
-// db schema
-export type User = {
-  id: number;
-  name: string;
-  role: string;
-  salt: string;
-  password: string;
-};
-export type Post = {
-  id: string;
-  timestamp: number;
-  author: string;
-  text: string;
-
-  // public: shown on GET /api/post, and main PostList
-  // hidden: not shown on GET /api/post, or main PostList, but still can be got via its ID (GET /api/post/[id])
-  // private: same as hidden, but cant be got even by ID
-  privacy?: "public" | "hidden" | "private";
-  // images: base64[]; // idk how to add this one
-};
 export type Data = {
   users: User[];
   posts: Post[];
@@ -197,9 +178,29 @@ export async function deletePost(postID: string) {
   return true;
 }
 
-export async function editPost(postID: string) {
+export async function editPost(
+  postID: string,
+  ediff: { timestamp?: string; text?: string; privacy?: string }
+) {
   // edits a post in-place in the DB (by ID)
 
-  const post = db.data.posts.find((p) => p.id === postID);
-  return post;
+  // get post index
+  const postIndex = db.data.posts.findIndex((p) => p.id === postID);
+
+  // apply ediff
+  try {
+    for (const [key, value] of Object.entries(ediff)) {
+      console.log(
+        `editing post ${postID}: ${key}=${db.data.posts[postIndex][key]} --> ${postID}=${value}`
+      );
+      db.data.posts[postIndex][key] = value;
+    }
+
+    await db.write();
+
+    return true;
+  } catch (err) {
+    console.error("error editing post: ", err);
+    return false;
+  }
 }

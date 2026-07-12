@@ -1,14 +1,16 @@
 "use client";
 import React, {
   useState,
-  useEffect,
   FormEvent,
   RefObject,
   useRef,
+  useContext,
 } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { sleep } from "../library/shared";
+import { UserContext } from "./contexts/UserContext";
 import styles from "../style/module/SubmitPost.module.css";
-import { sleep } from "../shared";
 
 const MIN_TEXTAREA_HEIGHT = 59;
 
@@ -60,32 +62,20 @@ export function AutoAdjustTextarea({
 export default function SubmitPost() {
   const router = useRouter();
 
+  // context
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("FriendsList must be used within a UserContext provider");
+  }
+  const { isLoggedIn } = context;
+
   // states
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [status_text, setStatusText] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
 
   // refs
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [textAreaValue, setTextAreaValue] = React.useState("");
-
-  // totally not AI generated code... i didnt give up on writing isLoggedIn by myself, what are you talking about?
-  useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const response = await fetch("/api/user");
-        if (response.ok) {
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-        }
-      } catch (error) {
-        console.error("Error checking session:", error);
-        setIsLoggedIn(false);
-      }
-    };
-    checkSession();
-  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -94,7 +84,7 @@ export default function SubmitPost() {
     const text_content = formData.get("text_content");
 
     if (isLoggedIn) {
-      // Only allow submission if logged in
+      // only allow submission if logged in
 
       if (text_content === "") {
         setStatusText("post cannot be empty");
@@ -146,7 +136,7 @@ export default function SubmitPost() {
         // alert("post failed");
       }
     } else {
-      alert("Please log in to submit a post."); // Or redirect to login page
+      toast.error("Please log in to submit a post."); // or redirect to login page
     }
   }
 

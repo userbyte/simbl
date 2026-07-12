@@ -4,7 +4,7 @@
   font-family: var(--font-source-code-pro);
   margin: auto;
   margin-bottom: 18px;
-  border: 1px solid white;
+  border: 1px solid var(--accent);
   width: 29.92vw;
   padding: 10px;
   min-height: fit-content;
@@ -33,7 +33,7 @@
   font-size: inherit;
   font-family: inherit;
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid var(--accent);
   border-radius: 0;
   color: white;
   min-width: 92%;
@@ -58,10 +58,10 @@
   cursor: pointer;
   font-size: 2em;
   background-color: black;
-  border: 1px solid white;
+  border: 1px solid var(--accent);
   border-left-style: unset;
   border-radius: 0;
-  color: white;
+  color: var(--accent);
 }
 
 /* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */

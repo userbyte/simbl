@@ -2,9 +2,10 @@
 "use client";
 
 import { FormEvent } from "react";
-import styles from "./page.module.css";
-import { sleep } from "../shared";
+import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { sleep } from "../library/shared";
+import styles from "./page.module.css";
 
 export default function SetupPage() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function SetupPage() {
         status_text.textContent = text;
         status_text.setAttribute("status_type", type);
       } else {
-        alert(text);
+        toast.info(text);
       }
     }
 

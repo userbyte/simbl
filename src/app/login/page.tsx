@@ -1,7 +1,8 @@
 "use client";
 import { redirect } from "next/navigation";
-// import { GetSession, Login, Logout } from "@/app/api/authv2";
 import { FormEvent } from "react";
+import { toast } from "react-toastify";
+// import { GetSession, Login, Logout } from "@/app/api/authv2";
 import styles from "../style/module/Login.module.css";
 
 export default function Page() {
@@ -23,10 +24,10 @@ export default function Page() {
     });
 
     if (response.ok) {
-      alert("login good");
+      toast.success("login good");
       redirect("/");
     } else {
-      alert("login bad");
+      toast.error("login bad");
     }
   }
 

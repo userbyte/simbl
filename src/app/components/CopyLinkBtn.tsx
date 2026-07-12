@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { sleep } from "../shared";
+import { sleep } from "../library/shared";
 import styles from "@/app/style/module/CopyLinkBtn.module.css";
 
 export default function CopyLinkBtn({

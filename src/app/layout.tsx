@@ -3,6 +3,8 @@ import Footer from "./components/Footer";
 import { Metadata, Viewport } from "next";
 import { Afacad_Flux, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
+import { Slide, ToastContainer } from "react-toastify";
+import { UserProvider } from "./components/contexts/UserContext";
 
 const font_AfacadFlux = Afacad_Flux({
   subsets: ["latin"],
@@ -55,8 +57,14 @@ export default function RootLayout({
     >
       <body>
         <Header />
-        {children}
+        <UserProvider>{children}</UserProvider>
         <Footer />
+        <ToastContainer
+          position="bottom-center"
+          theme="dark"
+          closeOnClick={true}
+          transition={Slide}
+        />
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
 .post_container {
   position: relative;
   margin: auto;
-  margin-bottom: 18px;
-  border: 1px solid white;
+  border: 1px solid var(--accent);
+  background-color: var(--background);
   width: 30vw;
   font-size: 0.8vw;
 }
@@ -53,7 +53,7 @@
 }
 
 .post_text {
-  border-top: 1px solid white;
+  border-top: 1px solid var(--accent);
   padding: 0 10px 0;
   text-align: left;
   overflow-wrap: break-word;
@@ -65,6 +65,90 @@
   color: #99ccdc;
   text-decoration: underline;
   font-size: 1em;
+}
+
+.post_container span {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.post_container[data-editmode="true"] span input[type="button"] {
+  font-size: inherit;
+}
+
+.post_text[data-editmode="true"] {
+  border-top: unset;
+  padding: 0;
+  margin-bottom: 44px;
+}
+
+.post_container[data-editmode="true"] input {
+  display: block;
+  font-family: var(--font-source-code-pro);
+  padding: 6px;
+  font-size: 1.35em;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  width: 100%;
+}
+
+.post_container[data-editmode="true"] textarea {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: black;
+  border: 1px solid #ffba54;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  color: white;
+  width: 100%;
+  height: 4.4ch;
+  overflow: hidden;
+  margin: unset;
+  padding: 2px;
+}
+
+.post_container[data-editmode="true"] textarea:focus {
+  outline: unset;
+}
+
+.post_container[data-editmode="true"] input[type="datetime-local"] {
+  color: #ffba54;
+  margin-left: auto;
+  min-width: fit-content;
+  align-content: center;
+  font-size: inherit;
+  width: fit-content;
+  border: unset;
+}
+
+.post_container[data-editmode="true"] span input:first-child {
+  background-color: #9f0808;
+  justify-content: flex-end;
+  border-right: 1px solid var(--accent);
+  border-left: unset;
+  border-bottom: unset;
+  margin-right: auto;
+}
+.post_container[data-editmode="true"] span input:first-child:hover {
+  background-color: #ed0b0b;
+}
+
+.post_container[data-editmode="true"] span input {
+  border-right: unset;
+  border-bottom: unset;
+  max-width: fit-content;
+}
+
+.post_container[data-editmode="true"] span input:hover {
+  cursor: pointer;
+  background-color: #ffffff26;
 }
 
 /* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */

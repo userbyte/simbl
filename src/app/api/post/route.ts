@@ -1,8 +1,9 @@
 // API Route
 // /api/post
 
+import { Post } from "@/app/library/models/post";
 import { decryptJWT } from "../authv2";
-import { getPosts, Post, savePost } from "../db";
+import { getPosts, savePost } from "../../library/db";
 import { cookies } from "next/headers";
 
 // GET /api/post

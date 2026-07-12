@@ -1,8 +1,9 @@
 // "use client";
-import { getPost, getPosts } from "../api/db";
-import { Post } from "./Post";
+import { getPost, getPosts } from "../library/db";
+import { Post_ } from "./Post";
 // import { useContext } from "react";
 // import { PostListContext } from "./PostListContext";
+import styles from "@/app/style/module/PostList.module.css";
 
 async function buildPostList() {
   const post_el_list: React.JSX.Element[] = [];
@@ -21,7 +22,7 @@ async function buildPostList() {
           if (postObj != false) {
             // add post element to list
             post_el_list.push(
-              <Post key={post.id} post={postObj} renderSettings={{}} />
+              <Post_ key={post.id} post={postObj} renderSettings={{}} />
             );
           }
         });
@@ -33,32 +34,9 @@ async function buildPostList() {
   return reversed_post_el_list;
 }
 
-// function BuildPostList2() {
-//   const { posts, addPost, editPost } = useContext(PostListContext);
-//   return <></>;
-// }
-
-// export default async function PostList({ ref }) {
 export default async function PostList() {
   return (
-    <div id="posts">
-      {/* <!-- <div class="post-container">
-            <div class="post-content">
-                <!- - an example post - ->
-                <div class="post-info">
-                    <div class="post-author">
-                        <picture>
-                            <!- - <source srcset="files/img/webp/default_pfp.webp" type="image/webp"> - ->
-                            <source srcset="files/img/svg/default_pfp.svg" type="image/svg"> 
-                            <source srcset="files/img/png/default_pfp.png" type="image/png"> 
-                            <img src="files/img/png/default_pfp.png" alt="pfp" class="banners">
-                        </picture>
-                        <p>user</p>
-                    </div>
-                    <div class="post-timestamp"><p>1/1/1970 12:00AM</p></div></div>
-                <div class="post-text"><p>this is an example post on simbl, a solo microblogging platform.</p></div>
-            </div>
-        </div> --> */}
+    <div id="posts" className={styles.main}>
       {await buildPostList()}
     </div>
   );

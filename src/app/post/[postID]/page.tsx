@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getPost } from "@/app/api/db";
-import { prettifyUnixTime } from "@/app/shared";
-import { Post } from "@/app/components/Post";
+import { getPost } from "@/app/library/db";
+import { prettifyUnixTime } from "@/app/library/shared";
+import { Post_ } from "@/app/components/Post";
 import BackBtn from "@/app/components/BackBtn";
 import styles from "./page.module.css";
 
@@ -65,7 +65,7 @@ export default async function PostPage({
     <>
       <div className={styles.postpage}>
         <BackBtn />
-        <Post post={post} renderSettings={{}} />
+        <Post_ post={post} renderSettings={{}} />
       </div>
     </>
   );

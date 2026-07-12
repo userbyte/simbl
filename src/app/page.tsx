@@ -1,3 +1,4 @@
+import { UserProvider } from "./components/contexts/UserContext";
 import PostList from "./components/PostList";
 import SubmitPost from "./components/SubmitPost";
 // import styles from "./page.module.css";

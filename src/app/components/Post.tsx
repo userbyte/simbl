@@ -1,48 +1,22 @@
-import { postObj, postRenderSettings } from "../models/post";
-import { prettifyUnixTime } from "../shared";
+import { Post, PostRenderSettings } from "../library/models/post";
+import { prettifyUnixTime } from "../library/shared";
 import CopyLinkBtn from "./CopyLinkBtn";
+import EditBtn from "./EditBtn";
 import styles from "@/app/style/module/Post.module.css";
 
-export function Post({
+export function Post_({
   post,
   renderSettings,
 }: {
-  post: postObj;
-  renderSettings: postRenderSettings | undefined;
+  post: Post;
+  renderSettings: PostRenderSettings | undefined;
 }): React.JSX.Element {
   if (!renderSettings) {
     renderSettings = {};
   }
-  const id = post.id;
-  const timestamp = post.timestamp;
-  const author = post.author;
-  const text_content = post.text;
 
   return (
-    // <div className="post-container" id={`post-${id}`}>
-    //   {/* buttons */}
-    //   <form action={handleEdit}>
-    //     <button id="edit-post-btn"><i className="fas fa-edit"/></button>
-    //   </form>
-    //   <form action={handleDelete}>
-    //     <button id="delete-post-btn"><i className="fas fa-trash-alt"/></button>
-    //   </form>
-    //   <div className="post-content">
-
-    //   </div>
-    // </div>
-
-    <div className={styles.post_container} id={`post-${id}`} key={id}>
-      {/* <button id="edit-post-btn" style="display: block;">
-        <i className="fas fa-edit" />
-      </button>
-      <button
-        id="delete-post-btn"
-        onclick={handleDelete}
-        style="display: block;"
-      >
-        <i className="fas fa-trash-alt" />
-      </button> */}
+    <div className={styles.post_container} id={`post-${post.id}`} key={post.id}>
       <div
         className={styles.post_content}
         // onClick="location.href = 'post.html?id=c23f5c9667'"
@@ -51,7 +25,7 @@ export function Post({
           <div className={styles.post_author}>
             <picture>
               {/* <source srcset="files/img/webp/default_pfp.webp" type="image/webp"> */}
-              <source srcSet={`/api/user/pfp/${author}`} />
+              <source srcSet={`/api/user/pfp/${post.author}`} />
               <source srcSet="/img/svg/default_pfp.svg" type="image/svg" />
               <source srcSet="/img/png/default_pfp.png" type="image/png" />
               <img
@@ -60,17 +34,20 @@ export function Post({
                 className="banners"
               />
             </picture>
-            <p>{author}</p>
+            <p>{post.author}</p>
           </div>
           <div className={styles.post_timestamp}>
-            <p>{prettifyUnixTime(timestamp)}</p>
+            <p>{prettifyUnixTime(post.timestamp)}</p>
           </div>
         </div>
         <div className={styles.post_text}>
-          <p>{text_content}</p>
+          <p>{post.text}</p>
         </div>
       </div>
-      <CopyLinkBtn link={`/post/${id}`} useOrigin="true" />
+      <span>
+        <EditBtn targetPost={post} />
+        <CopyLinkBtn link={`/post/${post.id}`} useOrigin="true" />
+      </span>
     </div>
   );
 }

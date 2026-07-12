@@ -34,6 +34,11 @@ export function generatePostID() {
   return result;
 }
 
+/**
+ * Pad a number with zeroes for use in 12 hour time formatting.
+ *
+ * @param {number} num  Number to pad
+ */
 export function pad(num: number) {
   return (num < 10 ? "0" : "") + num;
 }
@@ -135,14 +140,6 @@ export function prettifyUnixTime(timestamp: number, format?: string) {
 
   return f;
 }
-
-export const HandleEdit = async (data: FormData) => {
-  console.log(data);
-};
-
-export const HandleDelete = async (data: FormData) => {
-  console.log(data);
-};
 
 // function ShowFullText(event: Event, post_id: string) {
 //   event.preventDefault();

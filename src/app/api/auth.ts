@@ -2,7 +2,8 @@
 
 import crypto from "crypto";
 // import { NextRequest } from "next/server";
-import { db, getUser, User } from "./db";
+import { db, getUser } from "../library/db";
+import { User } from "../library/models/user";
 
 // function generateToken(length: number) {
 //   // generates a token for hashing purposes
@@ -47,7 +48,7 @@ export function authenticateWithCredentials(
   password: string
 ) {
   const target = usernameToUser(username);
-  if (target != false) {
+  if (target != false && target.password && target.salt) {
     // hash entered password
     const hashed = hashPW(target.salt, password);
     // check result against db

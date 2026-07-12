@@ -3,8 +3,8 @@
 
 import { cookies } from "next/headers";
 import { encryptAccessJWT, encryptRefreshJWT } from "../../authv2";
-import { createUser, initializeDB } from "../../db";
-import { db } from "../../db";
+import { createUser, initializeDB } from "../../../library/db";
+import { db } from "../../../library/db";
 
 // POST /api/post
 export async function POST(request: Request) {

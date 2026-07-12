@@ -1,8 +1,8 @@
 // API Route
 // /api/post/{postID}
 
-import { Decrypt } from "../../authv2";
-import { DeletePost, GetPost } from "../../db";
+import { decryptJWT } from "../../authv2";
+import { deletePost, getPost } from "../../db";
 import { cookies } from "next/headers";
 
 // GET /api/post/{postID}
@@ -15,7 +15,7 @@ export async function GET(
   // get post from parameters
   const postID = (await params).postID;
 
-  const post = await GetPost(postID);
+  const post = await getPost(postID);
   return new Response(JSON.stringify(post), {
     headers: { "Content-Type": "application/json" },
   });
@@ -40,14 +40,14 @@ export async function DELETE(
     );
   }
   // decrypt session
-  const decrypted_session = await Decrypt(session);
+  const decrypted_session = await decryptJWT(session);
 
   // is the user of this session an admin?
   if (decrypted_session.user.role === "admin") {
     // ok, seems the user was admin, carry on...
     const postID = (await params).postID;
     console.log(`deleting post of ID ${postID}...`);
-    const x = await DeletePost(postID);
+    const x = await deletePost(postID);
     if (x == true) {
       return new Response("Success", { status: 200 });
     } else {

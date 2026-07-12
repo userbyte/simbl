@@ -1,15 +1,15 @@
 // API Route
 // /api/post
 
-import { Decrypt } from "../authv2";
-import { GetPosts, Post, SavePost } from "../db";
+import { decryptJWT } from "../authv2";
+import { getPosts, Post, savePost } from "../db";
 import { cookies } from "next/headers";
 
 // GET /api/post
 export async function GET() {
   // returns all posts in the database
 
-  const posts: Post[] | false = await GetPosts();
+  const posts: Post[] | false = await getPosts();
   if (!posts) {
     // no posts were found, or there was a database error
     return new Response(JSON.stringify({ posts: {} }), { status: 200 });
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
   }
 
   // decrypt session
-  const decrypted_session = await Decrypt(session);
+  const decrypted_session = await decryptJWT(session);
 
   // is the user of this session an admin?
   if (decrypted_session.user.role === "admin") {
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       const body = await request.json();
       body.post.author = decrypted_session.user.name;
       console.log("saving post: ", body.post);
-      const sp = await SavePost(body.post);
+      const sp = await savePost(body.post);
       if (sp === false) {
         return new Response(
           JSON.stringify({ status: "failed", error: "failed to save post" }),

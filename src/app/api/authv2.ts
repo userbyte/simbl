@@ -24,7 +24,7 @@ if (secretKey === undefined) {
 }
 const key = new TextEncoder().encode(secretKey);
 
-export async function Encrypt(payload: JWTPayload) {
+export async function encryptAccessJWT(payload: JWTPayload) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -32,7 +32,7 @@ export async function Encrypt(payload: JWTPayload) {
     .sign(key);
 }
 
-export async function Encrypt_Refresh(payload: JWTPayload) {
+export async function encryptRefreshJWT(payload: JWTPayload) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -41,7 +41,7 @@ export async function Encrypt_Refresh(payload: JWTPayload) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function Decrypt(input: string): Promise<any> {
+export async function decryptJWT(input: string): Promise<any> {
   // ): Promise<JWTVerifyResult<JWTPayload> & ResolvedKey<KeyLike>> {
   try {
     const { payload } = await jwtVerify(input, key, {
@@ -90,19 +90,19 @@ export async function Decrypt(input: string): Promise<any> {
 //   // ).set("tkaccess", session, { expires, httpOnly: true });
 // }
 
-export async function Logout() {
+export async function logout() {
   // Destroy the session
   (await cookies()).set("tkaccess", "", { expires: new Date(0) });
   (await cookies()).set("tkrefresh", "", { expires: new Date(0) });
 }
 
-export async function GetSession() {
+export async function getSession() {
   const session = (await cookies()).get("tkaccess")?.value;
   if (!session) return null;
-  return await Decrypt(session);
+  return await decryptJWT(session);
 }
 
-export async function UpdateSession() {
+export async function updateSession() {
   const res = NextResponse.next();
 
   // get refresh token
@@ -110,7 +110,7 @@ export async function UpdateSession() {
   if (!session) return;
 
   // create a fresh access token for the user
-  const parsed = await Decrypt(session);
+  const parsed = await decryptJWT(session);
   if (parsed === false) {
     // cookie is invalid, delete it
     // this will log the user out, but that doesnt matter their cookie broke anyway
@@ -122,7 +122,7 @@ export async function UpdateSession() {
   parsed.expires = new Date(Date.now() + 900 * 1000);
   res.cookies.set({
     name: "tkaccess",
-    value: await Encrypt(parsed),
+    value: await encryptAccessJWT(parsed),
     httpOnly: true,
     expires: parsed.expires,
     sameSite: "lax",

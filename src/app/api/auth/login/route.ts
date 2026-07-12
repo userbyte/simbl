@@ -2,8 +2,8 @@
 // /api/auth/login
 
 import { cookies } from "next/headers";
-import { Encrypt, Encrypt_Refresh } from "../../authv2";
-import { AuthenticateWithCredentials } from "../../auth";
+import { encryptAccessJWT, encryptRefreshJWT } from "../../authv2";
+import { authenticateWithCredentials } from "../../auth";
 
 // POST /api/post
 // export async function POST(request: Request) {
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   const body = await request.json();
   const username = body.username;
   const password = body.password;
-  const user = await AuthenticateWithCredentials(username, password);
+  const user = await authenticateWithCredentials(username, password);
 
   console.log(user);
   if (user === false) {
@@ -45,10 +45,10 @@ export async function POST(request: Request) {
     // set cookies
     // create the refresh token
     const expire_refresh = new Date(Date.now() + 7776000 * 1000); // 3 months from now
-    const session_refresh = await Encrypt_Refresh({ user, expire_refresh });
+    const session_refresh = await encryptRefreshJWT({ user, expire_refresh });
     // create the access token
     const expire_access = new Date(Date.now() + 900 * 1000); // 15 minutes from now
-    const session_access = await Encrypt({ user, expire_access });
+    const session_access = await encryptAccessJWT({ user, expire_access });
 
     // save tokens into cookies
     (await cookies()).set("tkrefresh", session_refresh, {

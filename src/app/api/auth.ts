@@ -2,9 +2,9 @@
 
 import crypto from "crypto";
 // import { NextRequest } from "next/server";
-import { db, GetUser, User } from "./db";
+import { db, getUser, User } from "./db";
 
-// function GenerateToken(length: number) {
+// function generateToken(length: number) {
 //   // generates a token for hashing purposes
 //   let result = "";
 //   const characters =
@@ -18,7 +18,7 @@ import { db, GetUser, User } from "./db";
 //   return result;
 // }
 
-function UsernameToUser(username: string) {
+function usernameToUser(username: string) {
   // get a user object by its username
 
   // create a map: username -> user
@@ -34,7 +34,7 @@ function UsernameToUser(username: string) {
   }
 }
 
-export function HashPW(salt: string, password: string) {
+export function hashPW(salt: string, password: string) {
   // password hashing function
 
   const salted_pw = salt + password;
@@ -42,17 +42,17 @@ export function HashPW(salt: string, password: string) {
   return hashed;
 }
 
-export function AuthenticateWithCredentials(
+export function authenticateWithCredentials(
   username: string,
   password: string
 ) {
-  const target = UsernameToUser(username);
+  const target = usernameToUser(username);
   if (target != false) {
     // hash entered password
-    const hashed = HashPW(target.salt, password);
+    const hashed = hashPW(target.salt, password);
     // check result against db
     if (hashed === target.password) {
-      return GetUser(target.id);
+      return getUser(target.id);
     }
   }
   return false;

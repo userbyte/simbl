@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import path from "path";
 import { writeFile } from "fs/promises";
-import { GetSession } from "../../authv2";
+import { getSession } from "../../authv2";
 
 // POST /api/user/setpfp
 export const POST = async (req: Request) => {
-  const session = await GetSession();
+  const session = await getSession();
   const username = session.user.name;
   const formData = await req.formData();
 

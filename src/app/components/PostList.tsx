@@ -1,13 +1,13 @@
 // "use client";
-import { GetPost, GetPosts } from "../api/db";
-import { PostObjectElement } from "../shared";
+import { getPost, getPosts } from "../api/db";
+import { Post } from "./Post";
 // import { useContext } from "react";
 // import { PostListContext } from "./PostListContext";
 
 async function buildPostList() {
   const post_el_list: React.JSX.Element[] = [];
   // i have to await this for the reverse order to work later, i dont understand it but it works so whatever
-  await GetPosts().then((posts) => {
+  await getPosts().then((posts) => {
     if (posts === false) {
       // no posts could be found, return empty element
       post_el_list.push(<></>);
@@ -17,12 +17,12 @@ async function buildPostList() {
 
       // create a post object element for every post
       posts.forEach((post) => {
-        GetPost(post.id).then((post_obj) => {
-          if (post_obj != false) {
-            const post_el = PostObjectElement(post_obj);
-
+        getPost(post.id).then((postObj) => {
+          if (postObj != false) {
             // add post element to list
-            post_el_list.push(post_el);
+            post_el_list.push(
+              <Post key={post.id} post={postObj} renderSettings={{}} />
+            );
           }
         });
       });

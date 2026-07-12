@@ -2,8 +2,8 @@
 // /api/post
 
 import { cookies } from "next/headers";
-import { Encrypt, Encrypt_Refresh } from "../../authv2";
-import { CreateUser, InitializeDB } from "../../db";
+import { encryptAccessJWT, encryptRefreshJWT } from "../../authv2";
+import { createUser, initializeDB } from "../../db";
 import { db } from "../../db";
 
 // POST /api/post
@@ -19,9 +19,9 @@ export async function POST(request: Request) {
       // if it is, make em admin
       role = "admin";
       // also, make sure db is initialized... just incase
-      await InitializeDB();
+      await initializeDB();
     }
-    const cu = await CreateUser(body_json.username, body_json.password, role);
+    const cu = await createUser(body_json.username, body_json.password, role);
     if (cu[0] === false) {
       if (cu[1] === "exists") {
         // user creation failed, user already exists
@@ -39,10 +39,10 @@ export async function POST(request: Request) {
       // set cookies
       // create the refresh token
       const expire_refresh = new Date(Date.now() + 7776000 * 1000); // 3 months from now
-      const session_refresh = await Encrypt_Refresh({ user, expire_refresh });
+      const session_refresh = await encryptRefreshJWT({ user, expire_refresh });
       // create the access token
       const expire_access = new Date(Date.now() + 900 * 1000); // 15 minutes from now
-      const session_access = await Encrypt({ user, expire_access });
+      const session_access = await encryptAccessJWT({ user, expire_access });
 
       // save tokens into cookies
       (await cookies()).set("tkrefresh", session_refresh, {

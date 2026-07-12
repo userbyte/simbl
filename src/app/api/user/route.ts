@@ -1,13 +1,13 @@
 // API Route
 // /api/user
 
-import { GetSession } from "../authv2";
+import { getSession } from "../authv2";
 
 // GET /api/user
 export async function GET() {
   // gets user information from the session
 
-  const session = await GetSession();
+  const session = await getSession();
   if (session != null) {
     return new Response(
       JSON.stringify({ status: "success", session: session }),

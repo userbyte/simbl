@@ -1,7 +1,7 @@
 "use client";
-import styles from "@/app/style/module/CopyLinkBtn.module.css";
 import { useState } from "react";
 import { sleep } from "../shared";
+import styles from "@/app/style/module/CopyLinkBtn.module.css";
 
 export default function CopyLinkBtn({
   link,
@@ -30,7 +30,7 @@ export default function CopyLinkBtn({
   }
 
   return (
-    <div className={styles.copylinkbtn}>
+    <div className={styles.main}>
       <button
         type="button"
         onClick={() => {

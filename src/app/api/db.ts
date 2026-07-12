@@ -3,8 +3,8 @@
 import { JSONFilePreset } from "lowdb/node";
 
 // import crypto from "crypto";
-import { GeneratePostID, UnixTimestampNow } from "../shared";
-import { HashPW } from "./auth";
+import { generatePostID, unixTimestampNow } from "../shared";
+import { hashPW } from "./auth";
 import fs from "fs";
 import path from "path";
 
@@ -39,7 +39,7 @@ const db_file = path.resolve("./data/db.json");
 export const db = await JSONFilePreset<Data>(db_file, defaultData);
 
 /// database functions ///
-export async function InitializeDB() {
+export async function initializeDB() {
   // ensure data dir exists
   const dir = "./data";
   if (!fs.existsSync(dir)) {
@@ -57,7 +57,7 @@ export async function InitializeDB() {
   console.log(`initialized db: ${db_file}`);
 }
 
-export function GenerateSalt(length: number) {
+export function generateSalt(length: number) {
   // generates salt for hashing purposes
   let result = "";
   const characters =
@@ -71,7 +71,7 @@ export function GenerateSalt(length: number) {
   return result;
 }
 
-export async function GetUser(id: string | number) {
+export async function getUser(id: string | number) {
   // get a user from the database
 
   const foundUser = db.data.users.find((user) => user.id === id);
@@ -88,7 +88,7 @@ export async function GetUser(id: string | number) {
   }
 }
 
-export async function CreateUser(
+export async function createUser(
   username: string,
   password: string,
   role: string
@@ -108,8 +108,8 @@ export async function CreateUser(
   const new_userID = db.data.users.length + 1;
 
   // salt and hash the password
-  const salt = GenerateSalt(10);
-  const hashed = HashPW(salt, password);
+  const salt = generateSalt(10);
+  const hashed = hashPW(salt, password);
 
   // add the new user to the database
   db.data.users.push({
@@ -131,11 +131,11 @@ export async function CreateUser(
   ];
 }
 
-export async function TestWrite() {
-  const post_id = GeneratePostID();
+export async function testWrite() {
+  const post_id = generatePostID();
   const test_post = {
     id: post_id,
-    timestamp: UnixTimestampNow(),
+    timestamp: unixTimestampNow(),
     author: "userbyte",
     text: "test",
   };
@@ -143,7 +143,7 @@ export async function TestWrite() {
   await db.write();
 }
 
-export async function GetPost(postID: string) {
+export async function getPost(postID: string) {
   const post = db.data.posts.find((p) => p.id === postID);
   if (post === undefined) {
     return false;
@@ -151,7 +151,7 @@ export async function GetPost(postID: string) {
   return post;
 }
 
-export async function GetPosts() {
+export async function getPosts() {
   // gets all posts
   const posts = db.data.posts;
   if (posts === undefined) {
@@ -161,15 +161,15 @@ export async function GetPosts() {
   return posts;
 }
 
-export async function SavePost(post: Post) {
+export async function savePost(post: Post) {
   // saves a post to the DB
   try {
-    const post_id = GeneratePostID();
+    const post_id = generatePostID();
     // create a temporary post object, and pull in data from the post passed to this function
     // prevents client-set timestamp and ID, and ensures correct schema
     const post_ = {
       id: post_id,
-      timestamp: UnixTimestampNow(),
+      timestamp: unixTimestampNow(),
       author: post.author,
       text: post.text,
     };
@@ -183,7 +183,7 @@ export async function SavePost(post: Post) {
   }
 }
 
-export async function DeletePost(postID: string) {
+export async function deletePost(postID: string) {
   // deletes a post from the DB (by ID)
 
   // const post = db.data.posts.find((p) => p.id === postID);
@@ -197,7 +197,7 @@ export async function DeletePost(postID: string) {
   return true;
 }
 
-export async function EditPost(postID: string) {
+export async function editPost(postID: string) {
   // edits a post in-place in the DB (by ID)
 
   const post = db.data.posts.find((p) => p.id === postID);

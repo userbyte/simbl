@@ -6,7 +6,7 @@ export default function BackBtn() {
   const router = useRouter();
 
   return (
-    <div className={styles.backbtn}>
+    <div className={styles.main}>
       <button type="button" onClick={() => router.back()}>
         ⬅
       </button>

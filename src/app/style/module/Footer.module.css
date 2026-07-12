@@ -1,4 +1,4 @@
-.footer {
+.main {
   position: fixed;
   left: 0px;
   bottom: 10px;
@@ -9,12 +9,13 @@
   text-align: center;
   margin: auto;
 }
-.footer a {
+
+.main a {
   text-decoration: underline;
 }
 
 @media only screen and (max-height: 1000px) {
-  .footer {
+  .main {
     position: relative;
     font-size: 1.5rem;
     padding-top: 2rem;

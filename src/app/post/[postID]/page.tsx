@@ -27,18 +27,18 @@ export async function generateMetadata({
       description: `${post.text}
 
       [${prettifyUnixTime(post.timestamp)}]`,
-      images: [
-        {
-          url: "https://simbl.userbyte.xyz/img/png/logo.png",
-          width: 175,
-          height: 175,
-        },
-      ],
+      // images: [
+      //   {
+      //     url: "https://simbl.userbyte.xyz/img/png/logo.png",
+      //     width: 175,
+      //     height: 175,
+      //   },
+      // ],
     },
-    twitter: {
-      // image too big on discord embed, so we unset
-      images: [],
-    },
+    // twitter: {
+    //   // image too big on discord embed, so we unset
+    //   images: [],
+    // },
   };
 }
 

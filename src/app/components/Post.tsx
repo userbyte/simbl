@@ -29,7 +29,7 @@ export function Post_({
               <source srcSet="/img/svg/default_pfp.svg" type="image/svg" />
               <source srcSet="/img/png/default_pfp.png" type="image/png" />
               <img
-                src="img/png/default_pfp.png"
+                src="/img/png/default_pfp.png"
                 alt="pfp"
                 className="banners"
               />
